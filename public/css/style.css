@@ -5,3 +5,10 @@ body {
 .navbar {
     background: linear-gradient(45deg, #ffffff 50%, #eb0000 100%);
 }
+.foot {
+    background: linear-gradient(45deg, #ffffff 0%, #eb0000 100%);
+}
+
+.col-12.text-center a {
+    text-decoration: none;
+}
