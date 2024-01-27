@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Meня зoвут Bладиcлaв, и у мeня за плечами 11 лет уcпешнoй работы в cферe банковcкиx гapaнтий. Помогаю кoмпaниям пoлучaть незавиcимые гaрантии, peшaя дaжe сaмыe сложныe вопpосы!">
+    <meta name="keywords" content="владислав, вадимович, патраков, москва, банковские, гарантии, сложные, заявки, брокер">
     <title>Владислав Патраков</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/foto-round.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+        <nav class="header navbar fixed-top navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand"><img src="{{ asset('images/vplogo.png') }}" alt="Владислав Вадимович Патраков логотип для небольших экранов"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
@@ -113,7 +116,7 @@
         </article>
         <section class="text-center">
             <br>
-            <a data-aos="zoom-in" href="https://api.whatsapp.com/send/?phone=79037955196&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%EF%BF%BD+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82...&type=phone_number&app_absent=0"><img src="{{ asset('images/wapp.png') }}" alt="написать в whatsapp" class="img-fluid"></a>
+            <a id="purchaseBtn2" data-aos="zoom-in" href="https://api.whatsapp.com/send/?phone=79037955196&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%EF%BF%BD+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82...&type=phone_number&app_absent=0"><img src="{{ asset('images/wapp.png') }}" alt="написать в whatsapp" class="img-fluid"></a>
             <br>
             <br>
         </section>
@@ -175,7 +178,7 @@
                     <img data-aos="fade-right" class="img-fluid" style="border-radius: 20px;" src="{{ asset('images/youtube.png') }}" alt="youtube">
                     <br>
                     <br>
-                    <a data-aos="fade-right" style="border-radius: 20px;" href="http://www.youtube.com/@FinContractMaster" class="btn btn-danger d-block btn-lg">Перейти на мой YouTube канал</a>
+                    <a role="button" id="purchaseBtn" data-aos="fade-right" style="border-radius: 20px;" href="http://www.youtube.com/@FinContractMaster" class="btn btn-danger d-block btn-lg">Перейти на мой YouTube канал</a>
                 </section>
                 <section data-aos="fade-left" class="col-12 col-md-6 text-center">
                     <iframe style="width: 50.625vh; height: 90vh; border-radius: 20px;" src="https://www.youtube.com/embed/6aTzl9GiIoQ" title="Банковские гарантии #тендер #госзакупки" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -399,10 +402,71 @@
             </div>
         </div>
         <br>
+        <br>
+        <br>
+        <br>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        let lastScroll = 0;
+        const defaultOffset = 200;
+        const header = document.querySelector('.header');
+
+        const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+
+        window.addEventListener('scroll', () => {
+            if (scrollPosition() > lastScroll && !header.classList.contains('hidden') && scrollPosition() > defaultOffset) {
+                // Scroll down
+                header.classList.add('hidden');
+            } else if (scrollPosition() < lastScroll && header.classList.contains('hidden')) {
+                // Scroll up
+                header.classList.remove('hidden');
+            }
+
+            lastScroll = scrollPosition();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggler = document.querySelector(".navbar-toggler");
+            const sideBar = document.querySelector(".sideBar");
+            const content = document.querySelector(".content");
+    
+            // При клике на кнопку бургера
+            navbarToggler.addEventListener("click", function() {
+                sideBar.classList.toggle("active");
+                content.classList.toggle("shifted");
+    
+                // Убираем обводку кнопки после некоторой задержки
+                setTimeout(function() {
+                    if (!sideBar.classList.contains("active")) {
+                        navbarToggler.blur(); // Убираем фокус с кнопки
+                    }
+                }, 300); // Подобрать подходящее значение задержки
+            });
+    
+            const navbarCollapse = document.querySelector(".navbar-collapse");
+    
+            // При закрытии навбара
+            navbarCollapse.addEventListener("hidden.bs.collapse", function() {
+                navbarToggler.blur(); // Убираем фокус с кнопки
+            });
+        });
+    
+        const myModal = document.getElementById('myModal');
+        const myInput = document.getElementById('myInput');
+    
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus();
+        });
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 
     <script>
         AOS.init();

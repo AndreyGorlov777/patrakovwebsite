@@ -12,3 +12,12 @@ body {
 .col-12.text-center a {
     text-decoration: none;
 }
+
+.header {
+    transition: transform 0.2s linear;
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+}
